@@ -1,0 +1,89 @@
+class Dice
+	Declare an integer vector to hold the dices' number. Call mContent.
+	Declare a construstor to initial each dice's number.
+	Declare a method called SetDices() to set number that in the mContent.
+	Method : void SetDices( int index, int num )
+		set the variable called num into the variable that in the index of mContent.
+	
+	Declare a method called ThrowDices() to give a random number to each dice.
+	Method : void ThrowDices( int dices )
+		for i ( 0 to size of mContent - 1 ) do
+			give a random number that from 1 to 6 to each dice
+		end for
+	end Method
+	
+	Declare a method called PrintDices() to print every dice's value.
+	
+	Declare a method called Sort() to order the dices.
+	Method : void Sort()
+		for i ( size of mContent - 1 to 1 ) do
+			declare a boolean value called swapped and set false
+			for j ( 0 to i - 1 ) do
+				if index(j) of mContent is bigger than index(j+1) of mContent then
+					Swap their variable
+					let swapped be true
+				end if
+			end for
+			
+			if the variable of swapped is false then
+				break the loop
+		end for
+	end Method
+	
+	Declare a method called Swap() to Swap two value of mContent
+	Method : void Swap( Vector<Integer> arr, int i, int j )
+		let temp be the value in index(i) of arr
+		set the value in index(i) of arr to be the value in index(j) of arr
+		set the value in index(j) of arr to be temp
+	end Method
+	
+	Declare a method called IsThreeOfAKind() to determine whether it is Three of a kind.
+	Method : boolean IsThreeOfAKind()
+		if the values in index(0~2) of mContent are same then
+			return true
+		else then
+			return false
+	end Method
+	
+	Declare a method called IsStraight() to determine whether it is Straight.
+	Method : boolean IsStraight()
+		if the values in index(0~2) of mContent are continuous then
+			return true
+		else then
+			return false
+	end Method
+	
+	Declare a method called HasPair() to determine whether it has a Pair.
+	Method : boolean HasPair()
+		if it is not three of a kind && two number in index(0~2) of mContent are same then
+			return true
+		else then 
+			return false
+	end Method
+	
+	Declare a method called Sum() to accumulate numbers of mContent and return the value.
+	Method : int Sum()
+		let sum be 0
+		for i ( 0 to size of mContent - 1 ) do
+			let sum be sum + index(i) of mContent
+			let i be i + 1
+		end for
+	end Method
+	
+end class
+
+class Main
+	Declare a method called main() to run the program.
+	Method : public static void main(String[] args)
+		initial dice be a Dice object
+		use dice to call ThrowDices() to give each dice a random number
+		use dice to call Sort() to order the dices
+		use dice to call PrintDices() to print all the number of dices
+		if dice.IsThreeOfAKind() is true then
+			print("This is three of a kind") 
+		else if dice.IsStraight() is true then 
+			print("This is straight")
+		else if dice.HasPair() is true then
+			print("There has a pair")
+		else then
+			print("Sum is : " + dice.Sum() )
